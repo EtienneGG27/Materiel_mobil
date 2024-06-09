@@ -8,4 +8,6 @@
     <string name="population_text">Population :</string>
     <string name="superficie_text">Superficie (m²) :</string>
     <string name="langues_text">Langues :</string>
+    <string name="add_to_favorites">Add favorite\n</string>
+    <string name="image_button_favorites">Favorites</string>
 </resources>

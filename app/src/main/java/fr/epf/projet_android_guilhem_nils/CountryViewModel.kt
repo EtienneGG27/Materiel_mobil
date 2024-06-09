@@ -1,13 +1,27 @@
 package fr.epf.projet_android_guilhem_nils
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
 import kotlinx.coroutines.launch
 
 class CountryViewModel : ViewModel() {
         var allCountries: List<Country> = emptyList()
         var countries: List<Country> = emptyList()
+        private val favorites: MutableList<Country> = mutableListOf()
+        private lateinit var sharedPreferences: SharedPreferences
+        private val moshi: Moshi = Moshi.Builder().build()
+        private val type = Types.newParameterizedType(List::class.java, Country::class.java)
+        private val adapter = moshi.adapter<List<Country>>(type)
+
+        fun init(context: Context) {
+                sharedPreferences = context.getSharedPreferences("favorites", Context.MODE_PRIVATE)
+                loadFavorites()
+        }
 
         fun loadAllCountries(onCountriesLoaded: (List<Country>) -> Unit, onError: (String) -> Unit) {
                 viewModelScope.launch {
@@ -32,5 +46,34 @@ class CountryViewModel : ViewModel() {
                 Log.d("CountryViewModel", "Filtered countries: ${filteredCountries.size}")
                 countries = filteredCountries
                 onCountriesFiltered(countries)
+        }
+
+        fun toggleFavorite(country: Country) {
+                if (favorites.contains(country)) {
+                        favorites.remove(country)
+                } else {
+                        favorites.add(country)
+                }
+                saveFavorites()
+        }
+
+        private fun saveFavorites() {
+                val favoritesJson = adapter.toJson(favorites)
+                sharedPreferences.edit().putString("favorites", favoritesJson).apply()
+        }
+
+        private fun loadFavorites() {
+                val favoritesJson = sharedPreferences.getString("favorites", null)
+                if (favoritesJson != null) {
+                        val loadedFavorites: List<Country>? = adapter.fromJson(favoritesJson)
+                        if (loadedFavorites != null) {
+                                favorites.clear()
+                                favorites.addAll(loadedFavorites)
+                        }
+                }
+        }
+
+        fun getFavorites(): List<Country> {
+                return favorites
         }
 }

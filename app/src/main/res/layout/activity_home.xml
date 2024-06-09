@@ -33,8 +33,17 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_search"
+            android:src="@android:drawable/ic_menu_search"
             android:contentDescription="@string/image_button_content"
+            android:padding="8dp" />
+
+        <ImageButton
+            android:id="@+id/favorites_button"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/btn_star_big_on"
+            android:contentDescription="@string/image_button_favorites"
             android:padding="8dp" />
     </LinearLayout>
 
