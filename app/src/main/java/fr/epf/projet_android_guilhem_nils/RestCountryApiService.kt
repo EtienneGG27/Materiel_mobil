@@ -10,17 +10,16 @@ object RestCountriesApiService {
 
     private val httpLoggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
-
     }
 
     private val client = OkHttpClient.Builder()
         .addInterceptor(httpLoggingInterceptor)
-        .connectTimeout(120,TimeUnit.SECONDS)
-        .readTimeout(45,TimeUnit.SECONDS)
+        .connectTimeout(120, TimeUnit.SECONDS)
+        .readTimeout(45, TimeUnit.SECONDS)
         .build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("https://restcountries.com/")
+        .baseUrl("https://www.apicountries.com/")
         .addConverterFactory(MoshiConverterFactory.create())
         .client(client)
         .build()

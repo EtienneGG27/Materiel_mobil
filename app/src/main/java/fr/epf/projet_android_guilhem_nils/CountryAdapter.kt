@@ -26,7 +26,7 @@ class CountryAdapter(
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = countries[position]
-        holder.countryName.text = country.name.common
+        holder.countryName.text = country.name
         Glide.with(holder.itemView.context)
             .load(country.flags.png)
             .into(holder.countryFlag)
@@ -38,7 +38,7 @@ class CountryAdapter(
     override fun getItemCount() = countries.size
 
     fun updateCountries(newCountries: List<Country>) {
-        countries = newCountries.sortedBy { it.name.common }
+        countries = newCountries.sortedBy { it.name }
         notifyDataSetChanged()
     }
 }

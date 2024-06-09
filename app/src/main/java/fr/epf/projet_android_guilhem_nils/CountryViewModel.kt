@@ -1,10 +1,9 @@
-package fr.epf.projet_android_guilhem_nils;
+package fr.epf.projet_android_guilhem_nils
 
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-
 
 class CountryViewModel : ViewModel() {
         var allCountries: List<Country> = emptyList()
@@ -27,10 +26,11 @@ class CountryViewModel : ViewModel() {
 
         fun filterCountries(query: String, onCountriesFiltered: (List<Country>) -> Unit) {
                 val filteredCountries = allCountries.filter {
-                        it.name.common.contains(query, ignoreCase = true) ||
-                                (it.capital != null && it.capital.any { capital -> capital.contains(query, ignoreCase = true) })
+                        (it.name?.contains(query, ignoreCase = true) ?: false) ||
+                                (it.capital?.contains(query, ignoreCase = true) ?: false)
                 }
                 Log.d("CountryViewModel", "Filtered countries: ${filteredCountries.size}")
                 countries = filteredCountries
                 onCountriesFiltered(countries)
-        }}
+        }
+}
