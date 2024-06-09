@@ -1,4 +1,4 @@
-package fr.epf.projet_android_guilhem_nils.ui.theme
+package fr.epf.projet_etienne_gauge.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

@@ -1,4 +1,4 @@
-package fr.epf.projet_android_guilhem_nils
+package fr.epf.projet_etienne_gauge
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import fr.epf.projet_android_guilhem_nils.ui.theme.Projet_Android_Guilhem_NilsTheme
+import fr.epf.projet_etienne_gauge.ui.theme.Projet_Android_Guilhem_NilsTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

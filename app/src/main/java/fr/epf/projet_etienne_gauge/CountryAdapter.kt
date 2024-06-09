@@ -1,4 +1,4 @@
-package fr.epf.projet_android_guilhem_nils
+package fr.epf.projet_etienne_gauge
 
 import android.view.LayoutInflater
 import android.view.View

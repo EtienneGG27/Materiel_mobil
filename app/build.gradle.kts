@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "fr.epf.projet_android_guilhem_nils"
+    namespace = "fr.epf.projet_etienne_gauge"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "fr.epf.projet_android_guilhem_nils"
+        applicationId = "fr.epf.projet_etienne_gauge"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
