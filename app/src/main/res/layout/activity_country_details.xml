@@ -6,13 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="16dp">
+
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:navigationIcon="?attr/homeAsUpIndicator"/>
+        app:navigationIcon="?attr/homeAsUpIndicator" />
+
     <ImageView
         android:id="@+id/country_flag"
         android:layout_marginTop="20dp"
@@ -20,6 +22,7 @@
         android:layout_height="200dp"
         android:scaleType="centerCrop"
         tools:src="@tools:sample/backgrounds/scenic" />
+
     <TextView
         android:id="@+id/country_name"
         android:layout_width="wrap_content"
@@ -28,6 +31,18 @@
         android:layout_marginTop="16dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         tools:text="Country Name" />
+
+    <ImageButton
+        android:id="@+id/favoriteButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:src="@android:drawable/btn_star_big_off"
+        android:contentDescription="@string/add_to_favorites"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:layout_marginTop="16dp" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,6 +62,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             tools:text="Capital" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -66,6 +82,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             tools:text="Population" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -85,6 +102,7 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Title"
             tools:text="Superficie" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

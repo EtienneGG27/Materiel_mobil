@@ -9,17 +9,16 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import kotlinx.coroutines.launch
 
-class CountryViewModel : ViewModel() {
+class CountryViewModel(context: Context) : ViewModel() {
         var allCountries: List<Country> = emptyList()
         var countries: List<Country> = emptyList()
         private val favorites: MutableList<Country> = mutableListOf()
-        private lateinit var sharedPreferences: SharedPreferences
+        private val sharedPreferences: SharedPreferences = context.getSharedPreferences("favorites", Context.MODE_PRIVATE)
         private val moshi: Moshi = Moshi.Builder().build()
         private val type = Types.newParameterizedType(List::class.java, Country::class.java)
         private val adapter = moshi.adapter<List<Country>>(type)
 
-        fun init(context: Context) {
-                sharedPreferences = context.getSharedPreferences("favorites", Context.MODE_PRIVATE)
+        init {
                 loadFavorites()
         }
 

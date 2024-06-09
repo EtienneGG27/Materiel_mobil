@@ -1,22 +1,25 @@
 package fr.epf.projet_android_guilhem_nils
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class FavoritesActivity : AppCompatActivity() {
 
     private lateinit var countryAdapter: CountryAdapter
-    private val viewModel: CountryViewModel by viewModels()
+    private lateinit var viewModel: CountryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
 
-        viewModel.init(this)  // Initialize ViewModel with context for SharedPreferences
+        val viewModelFactory = CountryViewModelFactory(applicationContext)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CountryViewModel::class.java)
 
         setupRecyclerView()
         loadFavorites()
@@ -39,7 +42,9 @@ class FavoritesActivity : AppCompatActivity() {
     }
 
     private fun onCountryClicked(country: Country) {
-        // Handle country click
+        val intent = Intent(this, CountryDetailsActivity::class.java)
+        intent.putExtra("country", country)
+        startActivity(intent)
     }
 
     private fun onFavoriteClicked(country: Country) {

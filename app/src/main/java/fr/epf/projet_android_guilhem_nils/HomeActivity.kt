@@ -7,19 +7,21 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var countryAdapter: CountryAdapter
-    private val viewModel: CountryViewModel by viewModels()
+    private lateinit var viewModel: CountryViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        viewModel.init(this)  // Initialize ViewModel with context for SharedPreferences
+        val viewModelFactory = CountryViewModelFactory(applicationContext)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(CountryViewModel::class.java)
 
         val searchButton = findViewById<ImageButton>(R.id.search_county_button)
         val searchEditText = findViewById<EditText>(R.id.home_search_country)
