@@ -1,6 +1,6 @@
 <resources>
-    <string name="app_name">Projet_Android_Guilhem_Nils</string>
-    <string name="search_text_entry">Entrez un pays ou une capitale</string>
+    <string name="app_name">AppCountry</string>
+    <string name="search_text_entry">Saisir un pays ou une capitale</string>
     <string name="image_button_content">search_icon</string>
     <string name="title_activity_home">HomeActivity</string>
     <string name="img_content">Drapeau du pays séléctionné</string>
@@ -10,4 +10,5 @@
     <string name="langues_text">Langues :</string>
     <string name="add_to_favorites">Add favorite\n</string>
     <string name="image_button_favorites">Favorites</string>
+    <string name="view_favorites">View Favorites</string>
 </resources>

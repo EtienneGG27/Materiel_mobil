@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class CountryAdapter(
     private val onCountryClicked: (Country) -> Unit,
@@ -32,6 +33,7 @@ class CountryAdapter(
         holder.countryName.text = country.name
         Glide.with(holder.itemView.context)
             .load(country.flags.png)
+            .apply(RequestOptions.circleCropTransform())
             .into(holder.countryFlag)
         holder.itemView.setOnClickListener {
             onCountryClicked(country)
