@@ -60,6 +60,7 @@ class CountryViewModel : ViewModel() {
         private fun saveFavorites() {
                 val favoritesJson = adapter.toJson(favorites)
                 sharedPreferences.edit().putString("favorites", favoritesJson).apply()
+                Log.d("CountryViewModel", "Favorites saved: $favoritesJson")
         }
 
         private fun loadFavorites() {
@@ -71,6 +72,7 @@ class CountryViewModel : ViewModel() {
                                 favorites.addAll(loadedFavorites)
                         }
                 }
+                Log.d("CountryViewModel", "Favorites loaded: $favoritesJson")
         }
 
         fun getFavorites(): List<Country> {

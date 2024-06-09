@@ -19,6 +19,8 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        viewModel.init(this)  // Initialize ViewModel with context for SharedPreferences
+
         val searchButton = findViewById<ImageButton>(R.id.search_county_button)
         val searchEditText = findViewById<EditText>(R.id.home_search_country)
         val favoritesButton = findViewById<ImageButton>(R.id.favorites_button)
@@ -35,7 +37,6 @@ class HomeActivity : AppCompatActivity() {
 
         setupRecyclerView()
         loadCountries()
-        viewModel.init(this)  // Initialize ViewModel with context for SharedPreferences
     }
 
     private fun setupRecyclerView() {

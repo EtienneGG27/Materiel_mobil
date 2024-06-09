@@ -16,6 +16,8 @@ class FavoritesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorites)
 
+        viewModel.init(this)  // Initialize ViewModel with context for SharedPreferences
+
         setupRecyclerView()
         loadFavorites()
     }
